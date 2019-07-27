@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
-    <title></title>
+    <title>Document</title>
 </head>
 <body>
-    
-    <div class="container">
-        @yield('content')
-    </div>
+    <h1>Projects</h1>
 
+    @foreach ($projects as $project)
+
+        <li>{{ $project->title }}</li>
+
+    @endforeach
 </body>
 </html>
