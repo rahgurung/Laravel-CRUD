@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Project;
-use Illuminate\Support\Facades\Validator;
-
 
 class ProjectsController extends Controller
 {
@@ -27,10 +25,11 @@ class ProjectsController extends Controller
 
     public function store()
     {
-        Project::create([
-            'title' => request('title'),
-            'description' => request('description')
+        request()->validate([
+            'title' => 'required | min:3',
+            'description' => 'required | min:3'
         ]);
+        Project::create($attributes);
         return redirect('/projects');
     }
 

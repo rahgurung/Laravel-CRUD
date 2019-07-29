@@ -1,25 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+@extends('layout')
+
+@section('content')
+    <h1 class="title">Create New Project</h1>
     <form action="/projects" method="POST">
         @csrf
-        <div>
-            <input type="text" name="title" placeholder="Project Title">
+        <div class="field">
+            <label for="title" class="label"> Title </label>
+            <div class="control">
+                <input type="text" class="input {{ $errors->has('title') ? 'is-danger' : '' }}" value="{{ old('title') }}" name="title" placeholder="Title" required>
+            </div>
+        </div>
+        <div class="field">
+            <label for="description" class="label"> Description </label>
+            <div class="control">
+                <input type="text" class="input" value="{{ old('description') }}" name="description" placeholder="Description" required>
+            </div>
         </div>
 
-        <div>
-            <textarea type="text" name="description"></textarea>
-        </div>
+        <div class="field">
+            <div class="control">
+                <button type="submit" class="button is-link">Submit</button>
+            </div>
+        </div> 
 
-        <div>
-            <button type="submit"> Create </button>
-        </div>
+        @if($errors->any())
+            <div class="notification is-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     </form>
-</body>
-</html>
+@endsection
