@@ -22,7 +22,7 @@
             <div class="control">
                 <button type="submit" class="button is-link">Update Project</button>
             </div>
-        </div>        
+        </div>
     </form>
     <form method="POST" action="/projects/{{ $project->id }}">
         @method('DELETE')
@@ -31,6 +31,6 @@
             <div class="control">
                 <button type="submit" class="button is-danger">Delete Project</button>
             </div>
-        </div> 
+        </div>
     </form>
 @endsection

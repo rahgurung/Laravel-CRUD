@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-    
+
     <div class="container" style="margin-top: 70px;">
         @yield('content')
     </div>

@@ -25,7 +25,7 @@ class ProjectsController extends Controller
 
     public function store()
     {
-        request()->validate([
+        $attributes = request()->validate([
             'title' => 'required | min:3',
             'description' => 'required | min:3'
         ]);
@@ -38,7 +38,7 @@ class ProjectsController extends Controller
         return view('projects.edit', compact('project'));
     }
 
-    public function update(Project $project) 
+    public function update(Project $project)
     {
         $project->update(request(['title', 'description']));
         return redirect('/projects');
